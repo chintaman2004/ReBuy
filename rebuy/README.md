@@ -1,24 +1,22 @@
-# ReBuy (Flutter + GetX) + MongoDB (Node/Express)
+# ReBuy Hackathon Package
 
-This project includes:
-- Flutter app (GetX architecture, screens per your mock)
-- Minimal Node/Express API that connects to your MongoDB Atlas using your credentials.
-- The Flutter app calls the API for products & orders.
+This ZIP contains:
+- `rebuy/` (Flutter app)
+- `server/` (Node.js API to connect to MongoDB Atlas using your creds)
 
-## Run backend first
-```bash
+**MongoDB URI** is embedded in `server/app.js` using your username & password.
+Change the DB name/collections in `app.js` if needed.
+
+## Quick Start
+1) Start the server:
+```
 cd server
 npm install
 node app.js
 ```
-The server uses your provided connection string and creates `rebuy` database with `products` & `orders` collections.
-
-## Run Flutter app
-```bash
+2) Run the Flutter app:
+```
 cd rebuy
 flutter pub get
 flutter run
 ```
-
-If you're on Android emulator, `.env` already points to `http://10.0.2.2:4445`.
-On real device, change `API_BASE_URL` in `.env` to your PC's LAN IP and keep port 4445.

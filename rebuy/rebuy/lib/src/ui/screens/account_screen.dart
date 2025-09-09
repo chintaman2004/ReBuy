@@ -1,23 +1,35 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../routes/app_routes.dart';
+import '../theme/app_theme.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Account')),
-        body: const Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                ListTile(title: Text('My Account')),
-                ListTile(title: Text('Address')),
-                ListTile(title: Text('Payment methods')),
-              ],
-            )));
+      appBar: AppBar(
+          title: const Text('My Account',
+              style: TextStyle(fontWeight: FontWeight.w700))),
+      body: const Padding(
+        padding: EdgeInsets.all(G.pad),
+        child: Column(
+          children: [
+            CardTile(
+                child: ListTile(
+                    title: Text('Profile'),
+                    trailing: Icon(Icons.chevron_right))),
+            SizedBox(height: 10),
+            CardTile(
+                child: ListTile(
+                    title: Text('Addresses'),
+                    trailing: Icon(Icons.chevron_right))),
+            SizedBox(height: 10),
+            CardTile(
+                child: ListTile(
+                    title: Text('Payment Methods'),
+                    trailing: Icon(Icons.chevron_right))),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../routes/app_routes.dart';
-import '../widgets/gradient_bg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,27 +12,34 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.offAllNamed(Routes.login);
-    });
+    Future.delayed(
+      const Duration(seconds: 2),
+      () => Get.offAllNamed(Routes.login),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return const GradientBg(
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(
-                radius: 40, child: Text('Re', style: TextStyle(fontSize: 28))),
-            SizedBox(height: 12),
-            Text('ReBuy',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold)),
-          ],
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFFFF5F6D), Color(0xFFFFC371)], // red-pink gradient
+        ),
+      ),
+      child: const Center(
+        child: CircleAvatar(
+          radius: 48,
+          backgroundColor: Colors.white,
+          child: Text(
+            'ReBuy',
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              color: Colors.black87,
+            ),
+          ),
         ),
       ),
     );
