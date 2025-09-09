@@ -1,11 +1,28 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const User = require('./models/db');
+
+
 const app = express();
-const port = 4445;
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+mongoose.connect('mongodb+srv://ahmedhassanc:Bholo321@hhhapp.o1bbonr.mongodb.net/?retryWrites=true&w=majority&appName=hhhapp')
+  .then(() => console.log('✅ MongoDB connected'))
+  .catch(err => console.error('❌ MongoDB connection error:', err));
+
+app.post('/add-user', async (req, res) => {
+  try {
+    const newUser = new User(req.body);
+    await newUser.save();
+    res.send('User added!');
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.get('/users', async (req, res) => {
+  const users = await User.find();
+  res.json(users);
 });
+
+app.listen(4445, () => console.log('Server running on port 4445'));
