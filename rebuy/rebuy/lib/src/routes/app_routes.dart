@@ -13,4 +13,10 @@ abstract class Routes {
   static const purchase = '/purchase';
   static const payment = '/payment';
   static const confirmation = '/confirmation';
+
+  static String? get cart => null;
+
+  static String? get favorites => null;
+
+  static String? get profile => null;
 }
